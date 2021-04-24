@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 dotenv.config({path: './config.env'});
 
 require('./db/conn');   /* Require This file  */
+const User = require('./model/userSchema')  // Exporting User Schema
 
 const app = express();
 
