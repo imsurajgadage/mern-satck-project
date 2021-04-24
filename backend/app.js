@@ -1,6 +1,20 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
 
 const app = express();
+const DB = 'mongodb+srv://suraj:suraj@cluster0.qfuix.mongodb.net/mernstack?retryWrites=true&w=majority'
+
+mongoose.connect(DB,{
+useNewUrlParser:true,
+useCreateIndex:true,
+useUnifiedTopology: true,
+useFindAndModify: false
+}).then(()=>{
+            console.log(`Connection Successful`)
+            }).catch((err)=>{
+                console.log(`No Connection`)
+            })
 
 // Middleware
 
@@ -33,3 +47,6 @@ app.get("/signup",(req,res)=>{
 app.listen(3001,()=>{
     console.log("Server is running from 3001")
 })
+
+
+// Database URL : mongodb+srv://suraj:<password>@cluster0.qfuix.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
