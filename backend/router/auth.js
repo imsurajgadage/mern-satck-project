@@ -9,32 +9,6 @@ router.get("/", (req, res) => {
   res.send("Hello from Home Page");
 });
 
-/* Using Promises */
-
-// router.post("/register",  async(req,res)=>{
-//     const {name, email, phone,work,password,cpassword} = req.body
-//     if(!name || !email || !phone || !work || !password || !cpassword){
-//         return res.status(422).json({error: 'Fill The All Fields!'})
-//     }
-
-//     User.findOne({email:email})
-//     .then((userExits)=>{
-//         if(userExits){
-//             return res.status(422).json({error: 'Email Already Exits!'})
-//         }
-
-//         const user = new User({name, email, phone,work,password,cpassword});
-
-//         user.save().then(()=>{
-//             res.status(201).json({message: 'Registration Successful!'})
-//         })
-//         .catch((err)=> res.status(500).json({error: 'Failed to register'}))
-
-//     }).catch((err)=> {console.log(err)})
-// })
-
-/* Using async await */
-
 router.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
   if (!name || !email || !phone || !work || !password || !cpassword) {
@@ -51,6 +25,7 @@ router.post("/register", async (req, res) => {
     const user = new User({ name, email, phone, work, password, cpassword });
 
     const userRegister = await user.save();
+
     if (userRegister) {
       res.status(201).json({ message: "Registration Successful!" });
     } else {
@@ -60,6 +35,28 @@ router.post("/register", async (req, res) => {
     console.log(err);
   }
 });
+
+router.post('/signin',async(req,res)=>{
+  try{
+    const {email, password} = req.body
+    if(!email || !password){
+      return res.status(400).json({error: 'Please Filled The Data'})
+    }
+
+    const userLogin = await User.findOne({ email : email });
+    console.log(userLogin); /* We get all the data */
+
+    if(!userLogin){
+      res.status(400).json({error :'User Error'})
+    }else{
+      res.json({message: 'User Login Successful'})
+    }
+  }catch(err){
+    console.log(err)
+  }
+
+})
+
 
 module.exports = router;
 
