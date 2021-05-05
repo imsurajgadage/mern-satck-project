@@ -53,8 +53,11 @@ router.post('/signin',async(req,res)=>{
       token = await userLogin.generateAuthToken();  //We grt token here from UserSchema
       console.log(token)
 
-
-
+      res.cookie('jwtoken',token,{
+        expires:new Date(Date.now()+25892000000),//Expires in 30 days
+        httpOnly:true
+      })
+      
     if(!isMatch){
       res.status(400).json({error :'Invalid Credientials'})
     }else{
