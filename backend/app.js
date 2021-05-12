@@ -15,6 +15,7 @@ const app = express();
 app.use(express.json())
 
 const PORT = process.env.PORT
+
 app.use(require('./router/auth'))  // Linking ROUTER Files
   
 // Middleware

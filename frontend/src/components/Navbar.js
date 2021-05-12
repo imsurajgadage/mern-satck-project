@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import {NavLink} from 'react-router-dom'
-
+import '../App.css'
 const Navbar = () => {
 
   return (
@@ -9,14 +9,14 @@ const Navbar = () => {
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <NavLink class="navbar-brand" to="#">
-            Navbar
+            My-APP
           </NavLink>
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
+            aria-controls="navbarSuNavbarpportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
@@ -25,27 +25,27 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <NavLink class="nav-link active" aria-current="page" to="/">
+                <NavLink class="link" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>
               <li class="nav-item">
-                <NavLink class="nav-link" to="/about">
+                <NavLink class=" link" to="/about">
                   About
                 </NavLink>
               </li>
               <li class="nav-item">
-                <NavLink class="nav-link" to="/contact">
+                <NavLink class=" link" to="/contact">
                   Contact
                 </NavLink>
               </li>
               <li class="nav-item">
-                <NavLink class="nav-link" to="/login">
+                <NavLink class=" link" to="/login">
                   Login
                 </NavLink>
               </li>
               <li class="nav-item">
-                <NavLink class="nav-link" to="/signup">
+                <NavLink class=" link" to="/signup">
                   Registration
                 </NavLink>
               </li>
