@@ -3,7 +3,7 @@ import './Signup.module.css'
 import {NavLink, useHistory} from 'react-router-dom'
 
 const Signup = () => {
-    const history = useHistory
+    const history = useHistory()
     const [user,setUser]= useState({
         name: "",
         email: "",
