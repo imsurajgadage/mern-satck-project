@@ -46,7 +46,7 @@ const Login = () => {
   
   <div class="row mb-4">
     <div class="col">
-      <NavLink to="/signup">Already User</NavLink>
+      <NavLink to="/signup">Create an Account</NavLink>
     </div>
   </div>
 

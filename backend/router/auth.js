@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 
 require("../db/conn");
 const User = require("../model/userSchema");
+const authenticate = require('../middleware/authenticate')
 
 router.get("/", (req, res) => {
   res.send("Hello from Home Page");
@@ -22,7 +23,7 @@ router.post("/register", async (req, res) => {
 
     if (userExits) {
       return res.status(422).json({ error: "Email Already Exits!" });
-    }else if(password != cpassword){
+    }else if(password !== cpassword){
 
       return res.status(422).json({ error: "Passwords are not matching!" });    
 
@@ -71,6 +72,11 @@ router.post('/signin',async(req,res)=>{
     console.log(err)
   }
 });
+
+router.get('/about', authenticate ,(req,res)=>{
+  console.log('Hello About Page')
+  
+})
 
 
 module.exports = router;
