@@ -74,8 +74,7 @@ router.post('/signin',async(req,res)=>{
 });
 
 router.get('/about', authenticate ,(req,res)=>{
-  console.log('Hello About Page')
-  
+  res.send(req.rootUser)
 })
 
 

@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useHistory} from 'react-router-dom'
 
 const About = () => {
+    const history = useHistory();
+    const callAboutPage = async () =>{
+        try{
+                const res = await fetch('/about',{
+                    method: 'GET',
+                    headers:{
+                        accept: "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    credentials: "include"
+                });
+
+                const data = await res.json()
+                console.log(data)
+
+                if(!res.status === 200){
+                    const error = new Error(res.error)
+                    throw error;
+                }
+
+        }catch(err){
+                console.log(err)
+                history.push('/login')
+        }
+    }
+    useEffect(()=>{
+            callAboutPage();
+    },[])
+
     return (
         <>
             <div className='container'>
-                <form method="">
+                <form method="GET">
                     
                     <div className='row'>
                         <div className='col-md-4'>
